@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hệ thống tư vấn định hướng Tin học</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1, h2 { color: #2c3e50; }
+    .form-group { margin: 15px 0; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; }
+    select, input[type="text"] { width: 100%; padding: 8px; margin-top: 5px; }
+    button { background: #2c3e50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px; }
+    .result { margin-top: 30px; background: #e8f0fe; padding: 20px; border-left: 5px solid #1a73e8; border-radius: 6px; display: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Hệ thống tư vấn chọn định hướng môn Tin học</h1>
+  <p>Hệ thống giúp học sinh lớp 9 lựa chọn định hướng phù hợp giữa <strong>Khoa học máy tính</strong> và <strong>Tin học ứng dụng</strong> dựa trên nguyện vọng và năng lực học tập.</p>
+
+  <form id="adviceForm">
+    <div class="form-group">
+      <label for="kyvong">Kỳ vọng nghề nghiệp:</label>
+      <select id="kyvong">
+        <option value="hieucn">Hiểu công nghệ</option>
+        <option value="sdpm">Sử dụng phần mềm</option>
+        <option value="ptpm">Phát triển phần mềm</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="toan">Mức độ học tốt môn Toán:</label>
+      <select id="toan">
+        <option value="co">Có</option>
+        <option value="khong">Không</option>
+      </select>
+    </div>
+
+    <button type="button" onclick="tuvan()">Xem gợi ý định hướng</button>
+  </form>
+
+  <div id="ketqua" class="result"></div>
+</div>
+
+<script>
+function tuvan() {
+  const kyvong = document.getElementById('kyvong').value;
+  const toan = document.getElementById('toan').value;
+  let result = '';
+
+  if (kyvong === 'hieucn') {
+    result = 'Gợi ý định hướng: <strong>Tin học ứng dụng</strong>';
+  } else if (kyvong === 'sdpm') {
+    result = 'Gợi ý định hướng: <strong>Tin học ứng dụng</strong>';
+  } else if (kyvong === 'ptpm') {
+    if (toan === 'co') {
+      result = 'Gợi ý định hướng: <strong>Khoa học máy tính</strong>';
+    } else {
+      result = 'Gợi ý định hướng: <strong>Tin học ứng dụng</strong>';
+    }
+  }
+
+  document.getElementById('ketqua').innerHTML = result;
+  document.getElementById('ketqua').style.display = 'block';
+}
+</script>
+</body>
+</html>
